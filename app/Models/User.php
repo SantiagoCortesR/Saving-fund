@@ -23,7 +23,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
+    protected $fillable = [ 
         'name',
         'email',
         'username',
@@ -61,4 +61,13 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function saving_name(){
+        return $this->hasOne(Saving::class, 'user_id_name');
+    }
+
+    public function saving_amount_saved(){
+        return $this->hasOne(Saving::class, 'user_id_amount');
+    }
+
 }

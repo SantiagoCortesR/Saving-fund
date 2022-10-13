@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Saving extends Model
 {
     use HasFactory;
+    
+    public function user_name(){
+        return $this->belongsTo(User::class, 'user_id_name');
+    }
+
+    public function user_amount(){
+        return $this->belongsTo(User::class, 'user_id_amount');
+    }
+    
 }

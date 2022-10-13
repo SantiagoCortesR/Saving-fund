@@ -24,24 +24,16 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-                <x-jet-label for="photo" value="{{ __('Photo') }}" /> 
+                <x-jet-label for="photo" value="{{ __('Photo') }}" />
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    {{-- <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover"> --}}
                     @if (Auth::user()->profile_photo_path)
-                                        <div class="flex items-center pr-2">
-                                            <img class="h-20 w-20 rounded-full object-cover" src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
-                                            <div class=" text-left text-white font-semibold mx-4 text-md">
-                                                <span class="">Hola {{ Auth::user()->username }}!</span>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="flex items-center pr-2 ">
-                                            <img class="h-20 w-20 rounded-full object-cover " src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
-                                            <span class="text-white text-md text-left mx-4 font-semibold">Hola {{ Auth::user()->username }}!</span>
-                                        </div>
-                                    @endif
+                        <img class="h-16 w-16 rounded-full object-cover" src="/storage/{{Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" />
+                    @else
+                        <img class="h-16 w-16 rounded-full object-cover" src="{{Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /> 
+                    @endif
+                    {{-- <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover"> --}}
                 </div>
 
                 <!-- New Profile Photo Preview -->

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\SavingController;
+use App\Http\Livewire\ShowSavings;
+use App\Http\Livewire\Showusers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +24,13 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->group(function () {
+])->group(function () { 
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+// Route::get('/users', Showusers::class)->name('users');
+Route::resource('/users', SavingController::class)->names('users');
+
+Route::get('/savings', ShowSavings::class)->name('savings');
